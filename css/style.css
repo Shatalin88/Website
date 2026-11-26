@@ -1,74 +1,304 @@
-.task {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 24px;
-    font-family: system-ui, sans-serif;
+/* ============================================================
+   Базовые стили
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
 }
 
-.field {
-    margin-bottom: 16px;
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    color: #1f2937;
+    background: #f9fafb;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    min-height: 100vh;
 }
 
-.field label,
-fieldset legend {
+/* ============================================================
+   Шапка — Flexbox
+   ============================================================ */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background: #1e3a8a;
+    color: #fff;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.site-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.site-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.site-nav a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   Основной контент
+   ============================================================ */
+
+main {
+    flex: 1;
+    padding: 32px 16px;
+}
+
+.task {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.task h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+/* ============================================================
+   Форма — CSS Grid: две колонки (label | поле)
+   ============================================================ */
+
+.reg-form {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px 24px;
+    align-items: start;
+}
+
+.form-label {
+    padding-top: 8px;
     font-weight: 600;
+    font-size: 15px;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 input,
 select,
 button {
     padding: 8px 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    font-size: 15px;
+    border: 1px solid #cbd5e1;
     border-radius: 6px;
+    font-family: inherit;
 }
 
-fieldset.field {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 10px;
-    flex-direction: row;
+input:focus,
+select:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 1px;
+    border-color: #2563eb;
+}
+
+/* ============================================================
+   Группа радиокнопок — Flexbox
+   ============================================================ */
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+    padding-top: 8px;
 }
 
-button {
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.radio-item input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
+/* ============================================================
+   Кнопки
+   ============================================================ */
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+button[type="submit"] {
     background: #2563eb;
     color: #fff;
     border: none;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 10px 24px;
+    font-weight: 600;
+    transition: background 0.15s;
 }
 
-button:hover {
+button[type="submit"]:hover {
     background: #1d4ed8;
 }
 
-.result {
-    margin-top: 20px;
+.btn-secondary {
+    background: #fff;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+    cursor: pointer;
+    padding: 10px 24px;
     font-weight: 600;
-    color: #16a34a;
+    transition: background 0.15s, color 0.15s;
 }
 
-/* --- Валидация --- */
+.btn-secondary:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* ============================================================
+   Валидация
+   ============================================================ */
 
 .error {
     color: #dc2626;
     font-size: 13px;
-    min-height: 16px;   /* чтобы не «прыгала» вёрстка при появлении ошибки */
+    min-height: 16px;
 }
 
-/* Поле с ошибкой */
 input.invalid,
 select.invalid {
     border-color: #dc2626;
     background: #fef2f2;
 }
 
-/* Поле валидно (только если пользователь что-то ввёл) */
 input.valid,
 select.valid {
     border-color: #16a34a;
+}
+
+.result {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #dc2626;
+}
+
+/* ============================================================
+   Страница с ответами
+   ============================================================ */
+
+.result-page h2 {
+    color: #16a34a;
+}
+
+.result-subtitle {
+    margin-top: -8px;
+    margin-bottom: 24px;
+    color: #6b7280;
+}
+
+.answer-list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.answer-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.answer-item dt {
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 15px;
+}
+
+.answer-item dd {
+    margin: 0;
+    font-size: 15px;
+    color: #111827;
+    word-break: break-word;
+}
+
+.result-page .form-actions {
+    margin-top: 24px;
+    justify-content: flex-start;
+}
+
+/* ============================================================
+   Подвал
+   ============================================================ */
+
+.site-footer {
+    padding: 16px 32px;
+    background: #111827;
+    color: #d1d5db;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ============================================================
+   Адаптивность
+   ============================================================ */
+
+@media (max-width: 640px) {
+    .reg-form {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .form-label {
+        padding-top: 0;
+        margin-top: 12px;
+    }
+
+    .form-actions {
+        justify-content: stretch;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .answer-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
 }

@@ -8,39 +8,41 @@
 </head>
 <body>
 
-    <header>
-        <!-- Шапка сайта: логотип, меню — заполним позже -->
+    <header class="site-header">
+        <div class="logo">Конференция</div>
+        <nav class="site-nav">
+            <a href="#">Главная</a>
+            <a href="#">Программа</a>
+            <a href="#">Контакты</a>
+        </nav>
     </header>
 
     <main>
-        <section class="task">
+        <!-- Страница с формой -->
+        <section class="task" id="form-page">
             <h2>Регистрация участников конференции</h2>
 
-            <form id="registration-form" novalidate>
-                <!-- ФИО -->
-                <div class="field">
-                    <label for="fullname">ФИО (полностью, кириллицей)</label>
+            <form id="registration-form" class="reg-form" novalidate>
+                <label for="fullname" class="form-label">ФИО (полностью, кириллицей)</label>
+                <div class="form-control">
                     <input type="text" id="fullname" name="fullname" placeholder="Иванов Иван Иванович" required>
                     <span class="error" id="error-fullname"></span>
                 </div>
 
-                <!-- Телефон -->
-                <div class="field">
-                    <label for="phone">Контактный телефон</label>
+                <label for="phone" class="form-label">Контактный телефон</label>
+                <div class="form-control">
                     <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
                     <span class="error" id="error-phone"></span>
                 </div>
 
-                <!-- Email -->
-                <div class="field">
-                    <label for="email">Адрес электронной почты</label>
+                <label for="email" class="form-label">Адрес электронной почты</label>
+                <div class="form-control">
                     <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
                     <span class="error" id="error-email"></span>
                 </div>
 
-                <!-- Секция -->
-                <div class="field">
-                    <label for="section">Секция конференции</label>
+                <label for="section" class="form-label">Секция конференции</label>
+                <div class="form-control">
                     <select id="section" name="section" required>
                         <option value="">— выберите секцию —</option>
                         <option value="math">Математика</option>
@@ -50,40 +52,82 @@
                     <span class="error" id="error-section"></span>
                 </div>
 
-                <!-- Дата рождения (необязательное) -->
-                <div class="field">
-                    <label for="birthdate">Дата рождения (необязательно)</label>
+                <label for="birthdate" class="form-label">Дата рождения (необязательно)</label>
+                <div class="form-control">
                     <input type="date" id="birthdate" name="birthdate">
                     <span class="error" id="error-birthdate"></span>
                 </div>
 
-                <!-- Доклад -->
-                <fieldset class="field">
-                    <legend>Доклад</legend>
-                    <label>
-                        <input type="radio" name="report" value="yes" id="report-yes"> Есть доклад
-                    </label>
-                    <label>
-                        <input type="radio" name="report" value="no" id="report-no" checked> Без доклада
-                    </label>
-                </fieldset>
+                <span class="form-label">Доклад</span>
+                <div class="form-control">
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="report" value="yes" id="report-yes"> Есть доклад
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="report" value="no" id="report-no" checked> Без доклада
+                        </label>
+                    </div>
+                </div>
 
-                <!-- Тема доклада (скрыто по умолчанию) -->
-                <div class="field" id="topic-field" hidden>
-                    <label for="topic">Тема доклада</label>
+                <label for="topic" class="form-label" id="topic-label" hidden>Тема доклада</label>
+                <div class="form-control" id="topic-field" hidden>
                     <input type="text" id="topic" name="topic" placeholder="Введите тему доклада">
                     <span class="error" id="error-topic"></span>
                 </div>
 
-                <button type="submit">Зарегистрироваться</button>
+                <div class="form-actions">
+                    <button type="submit">Зарегистрироваться</button>
+                </div>
             </form>
 
             <p id="result" class="result"></p>
         </section>
+
+        <!-- Страница с ответами (изначально скрыта) -->
+        <section class="task result-page" id="result-page" hidden>
+            <h2>Спасибо за регистрацию!</h2>
+            <p class="result-subtitle">Проверьте введённые данные:</p>
+
+            <dl class="answer-list">
+                <div class="answer-item">
+                    <dt>ФИО</dt>
+                    <dd id="ans-fullname"></dd>
+                </div>
+                <div class="answer-item">
+                    <dt>Контактный телефон</dt>
+                    <dd id="ans-phone"></dd>
+                </div>
+                <div class="answer-item">
+                    <dt>Email</dt>
+                    <dd id="ans-email"></dd>
+                </div>
+                <div class="answer-item">
+                    <dt>Секция конференции</dt>
+                    <dd id="ans-section"></dd>
+                </div>
+                <div class="answer-item">
+                    <dt>Дата рождения</dt>
+                    <dd id="ans-birthdate"></dd>
+                </div>
+                <div class="answer-item">
+                    <dt>Доклад</dt>
+                    <dd id="ans-report"></dd>
+                </div>
+                <div class="answer-item" id="ans-topic-row" hidden>
+                    <dt>Тема доклада</dt>
+                    <dd id="ans-topic"></dd>
+                </div>
+            </dl>
+
+            <div class="form-actions">
+                <button type="button" id="back-button" class="btn-secondary">← Заполнить заново</button>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <!-- Подвал сайта: копирайт, ссылки — заполним позже -->
+    <footer class="site-footer">
+        <p> 2026 Конференция. Все права защищены.</p>
     </footer>
 
     <script src="js/script.js"></script>
