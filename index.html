@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+      <header>
+        <!-- Шапка сайта: логотип, меню — заполним позже -->
+    </header>
+
+    <main>
+        <!-- Здесь будут задания -->
+         <main>
+    <section class="task">
+        <h2>Задание 1. Регистрация участников конференции</h2>
+
+        <form id="registration-form" novalidate>
+            <!-- ФИО -->
+            <div class="field">
+                <label for="fullname">ФИО (полностью)</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Иванов Иван Иванович" required>
+            </div>
+
+            <!-- Телефон -->
+            <div class="field">
+                <label for="phone">Контактный телефон</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+            </div>
+
+            <!-- Email -->
+            <div class="field">
+                <label for="email">Адрес электронной почты</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
+            </div>
+
+            <!-- Секция -->
+            <div class="field">
+                <label for="section">Секция конференции</label>
+                <select id="section" name="section" required>
+                    <option value="">— выберите секцию —</option>
+                    <option value="math">Математика</option>
+                    <option value="physics">Физика</option>
+                    <option value="informatics">Информатика</option>
+                </select>
+            </div>
+
+            <!-- Дата рождения -->
+            <div class="field">
+                <label for="birthdate">Дата рождения</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+            </div>
+
+            <!-- Доклад -->
+            <fieldset class="field">
+                <legend>Доклад</legend>
+                <label>
+                    <input type="radio" name="report" value="yes" id="report-yes"> Есть доклад
+                </label>
+                <label>
+                    <input type="radio" name="report" value="no" id="report-no" checked> Без доклада
+                </label>
+            </fieldset>
+
+            <!-- Тема доклада (скрыто по умолчанию) -->
+            <div class="field" id="topic-field" hidden>
+                <label for="topic">Тема доклада</label>
+                <input type="text" id="topic" name="topic" placeholder="Введите тему доклада">
+            </div>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+
+        <p id="result" class="result"></p>
+    </section>
+</main>
+    </main>
+
+    <footer>
+        <!-- Подвал сайта: копирайт, ссылки — заполним позже -->
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
