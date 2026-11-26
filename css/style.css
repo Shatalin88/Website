@@ -1,0 +1,53 @@
+.task {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    font-family: system-ui, sans-serif;
+}
+
+.field {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field label,
+fieldset legend {
+    font-weight: 600;
+}
+
+input,
+select,
+button {
+    padding: 8px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+fieldset.field {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    flex-direction: row;
+    gap: 20px;
+}
+
+button {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.result {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #16a34a;
+}
